@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe DockingStation do
-  before :each do
-     @bikes = Bike.new
-   end
   it {is_expected.to respond_to :release_bike}
 
   it { is_expected.to respond_to(:dock).with(1).argument }
+
+  it 'releases working bikes' do
+    @bikes = Bike.new
+    expect(@bikes).to be_working
+  end
 
   it 'docks something' do
 
@@ -17,9 +19,9 @@ describe DockingStation do
 
   it 'returns docked bikes' do
     @bikes = Bike.new
-    #subject.dock(@bikes)
+    subject.dock(@bikes)
 
-    expect(subject.dock(@bikes)).to match_array(@bikes)
+    expect(subject.release_bike).to eq @bikes
   end
 
   describe '#release_bike' do
@@ -33,11 +35,5 @@ describe DockingStation do
       expect {subject.dock Bike.new}.to raise_error 'Docking station full'
     end
   end
-
-  it 'releases working bikes' do
-    @bikes = subject.release_bike
-    expect(@bikes).to be_working
-  end
-
 
 end
