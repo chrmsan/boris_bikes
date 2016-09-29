@@ -35,6 +35,14 @@ describe DockingStation do
       expect { subject.release_bike }.to raise_error 'This bike is broken'
     end
 
+    it 'releases a working if there is a broken bike' do
+      @broken_bikes = Bike.new
+      @broken_bikes.is_broken
+      subject.dock(@broken_bikes)
+      @working_bikes = Bike.new
+      subject.dock(@working_bikes)
+      expect { subject.release_bike}.to eq @working_bikes
+    end
   end
 
   describe '#dock' do
