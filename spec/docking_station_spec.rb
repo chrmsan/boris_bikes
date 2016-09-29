@@ -29,7 +29,10 @@ describe DockingStation do
     end
 
     it 'raises an error when releasing a broken bike' do
-      #expect { subject.release_bike }.to raise_error 'This bike is broken'
+      @bikes = Bike.new
+      @bikes.is_broken
+      subject.dock(@bikes)
+      expect { subject.release_bike }.to raise_error 'This bike is broken'
     end
 
   end
