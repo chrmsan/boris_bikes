@@ -11,7 +11,6 @@ describe DockingStation do
   end
 
   it 'docks something' do
-
     @bikes = Bike.new
 
     expect(subject.dock(@bikes)).to match_array(@bikes)
