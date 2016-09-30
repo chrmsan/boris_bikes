@@ -11,12 +11,13 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
+    fail 'Cannot release, bike is broken' if @bikes.last == false 
+   
     @bikes.pop
   end
 
   def dock(bike)
    fail "Can't park! The station is full!" if full?
-   
    @bikes << bike
    @bikes.last
   end
@@ -32,3 +33,11 @@ class DockingStation
     @bikes.count >= capacity
   end
 end
+
+
+=begin
+if bike.working
+  release_bike
+else
+  "error"
+=end
