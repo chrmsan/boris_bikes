@@ -1,13 +1,13 @@
 class Bike
-  attr_reader :working 
+  attr_reader :broken 
 
   def initialize
-    @working = true
+    @broken = false
   end 
 
 
   def is_broken
-    @working = false
+    @broken = true
   end
 
 end
