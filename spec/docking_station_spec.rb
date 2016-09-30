@@ -61,8 +61,8 @@ describe DockingStation do
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
-    it 'checks that its working' do
-      expect(bike).to be_working
+    it 'checks that the bike is working' do
+      expect(bike.working).to eq true
     end
   end
 
